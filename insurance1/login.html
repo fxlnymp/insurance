@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="description" content="Developed By M Abdur Rokib Promy">
+    <meta name="author" content="cosmic">
+    <meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
+  
+    <title>fireRadar</title>
+    <!-- Bootstrap core CSS -->
+    <link href='assets/css/bootstrap.css' rel="stylesheet">
+    <link href='assets/css/custom.css' rel="stylesheet">
+     <link href='assets/css/style.css' rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+     /*.myimg{
+        height:550px;
+               background:url('assets/img/t.jpg');
+        background-size: cover;
+     }*/
+    body{
+        background:#f5f5f5;
+
+
+
+    }
+    </style>
+</head>
+  <body style="">
+    <!--header start-->
+  <div id="header" style="height:30px;line-height:30px;padding-left:5%;color:#d85757;">
+     <!--  <h2>FireRadar</h2> -->
+  </div>
+    <!--header end-->
+    <!--container start-->
+   <div class="" >
+        <div class="" style="margin:30px 0; width:100%;overflow:hidden;">
+
+            <div class="row">
+                <div class="col-sm-5 col-sm-offset-1 myimg "  style="text-align:center;margin-top:5%;">
+                    <img src="assets/img/t.jpg" alt="" style="width:80%;" />
+                     <!--  <h1 style="color:#fff;font-weight:300;margin-top:25%;">火眼洞察欺诈</h1>
+                      <h1 style="color:#fff;font-weight:300;margin-left:25%;">金眼甄别威胁</h1> -->
+
+                </div>
+                <!-- <div class="col-sm-3" style="padding-top:50px;">
+                     
+                </div> -->
+                <div class="col-sm-4 " style="z-index: 1000;padding-top:5%;">
+                    <form id="login" class="form-signin  wow fadeInUp" action="index.html" style="background:#fff;">
+                    <h1 style="font-size:28px;line-height:2em;margin-top:-30px;margin-bottom:40px;color: #009292;">FireRadar保险行业<br>人工智能反欺诈平台</h1>
+                    <h2 class="form-signin-heading" style="font-size:22px;color:#333;text-align:left;">用户登录</h2>
+                    <div class="login-wrap clear" style="height: 300px;">
+                        <label for="l_name" style="color: #fff;">账号：</label>
+                        <input  type="text" id="l_name" name="l_name" class="form-control" placeholder="请输入账号(邮箱)" autofocus>
+                        <label for="l_pwd"  style="color: #fff;" >密码：</label>
+                        <input type="password" id="l_pwd" name="l_pwd" class="form-control" placeholder="请输入密码">
+                         <div class="form-group">
+                           
+                            <input type="text" name="yzm" class="form-control" id="yzm" placeholder="请输入验证码">
+                            <img id="yzmimg" src="assets/img/yzm_02.png"  alt=" 验证码" height="30px"/>
+                            <span id="yes" class="glyphicon glyphicon-ok"></span>
+                            <span id="no" class="glyphicon glyphicon-remove"></span>
+                        </div>
+                        <a id="l_btn" class="btn  btn-login pull-right" type="button">登录</a>
+                        <div class="registration pull-left" style="margin-top: 15px;">
+                           没有账号?
+                            <a class="" href="service.html">
+                                立即注册
+                            </a>
+                        </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:100px;"> </div>
+        </div>
+    </div>
+<div id="footer">
+    <p style="text-align:center;font-size:16px;color:#333;font-weight:500;">© 金火眼（北京）科技有限公司 版权所有www.fireradar.com.cn 京ICP备17011905号 </p>
+</div>
+  <!-- js placed at the end of the document so the pages load faster -->
+ <script src="assets/js/jquery-1.11.1.min.js"></script>
+  
+    
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery-1.11.1.min.js"></script>
+  
+    
+    <script src="assets/js/md5.js"></script>
+    <script src="assets/js/js.cookie.js"></script>
+    <script>
+
+      
+        //登录
+     $(function(){
+         $('#l_btn').on('click',function(e){
+             e.preventDefault();
+             var input=$('input');
+             var isEmpty=false;
+             for(var i=0;i<input.length;i++){
+                 if(input[i].value===""){
+                     isEmpty=true;
+                     break;
+                 }
+             }
+             if(!isEmpty){
+                 var pwd=$('#l_pwd').val();
+                 pwd=hex_md5(pwd);
+                 console.log(pwd);
+                 var u=$('#l_name').val();
+                 var p=pwd;
+                 $.ajax({
+                     type:'GET',
+                     url:'http://101.201.253.36:8087/sys/login?username='+u+"&password="+p,
+                 
+                     success:function(data){
+                         console.log(data);
+                         if(data.code===2000){
+                             console.log(data.data.session);
+                            // alert('登录成功！');
+                             // $.cookie('username',$('#myname').val(),{'expires':7,
+                             //    path:'/'});
+
+                            // console.log($.cookie())
+                            Cookies.set('JSESSIONID', data.data.session, { expires: 1 });
+                           sessionStorage['loginUname']=u;
+                            location.href='fxdp.html'
+                         }else{
+                             alert('登录失败 用户名密码错误')
+                         }
+                     },
+                     error:function(){
+                        alert("请输入正确的用户信息")
+                     }
+
+                 })
+             }else{
+                 alert('账号/密码不能为空');
+             }
+         })
+     });
+    </script>
+
+  </body>
+</html>

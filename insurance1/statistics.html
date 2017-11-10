@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content="600">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Xenon Boostrap Admin Panel" />
+    <meta name="author" content="" />
+    
+    <title>Fireradar</title>
+
+    <!-- <link rel="stylesheet" href="http://fonts.useso.com/css?family=Arimo:400,700,400italic"> -->
+    <link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/xenon-core.css">
+    <link rel="stylesheet" href="assets/css/xenon-forms.css">
+    <link rel="stylesheet" href="assets/css/xenon-components.css">
+    <link rel="stylesheet" href="assets/css/xenon-skins.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/resizeable.js"></script>
+    <script src="assets/js/joinable.js"></script>
+    <script src="assets/js/xenon-api.js"></script>
+    <script src="assets/js/xenon-toggles.js"></script>
+
+
+    <!-- Imported scripts on this page -->
+    <script src="assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+    <script src="assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+
+<script src="assets/js/echarts/dataTool.js" type="text/javascript" charset="utf-8" ></script>
+    <!-- JavaScripts initializations and stuff -->
+    <script src="assets/js/xenon-custom.js"></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <style type="text/css" media="screen">
+        #myul{
+            height:290px;
+            overflow:hidden;
+            background:;
+            
+        }
+        #myul ul{
+            /*height:280px;*/
+            
+            text-decoration: none;
+            list-style: none;
+        }
+        #myul li{
+            background:#fafafa;
+            margin-bottom:3px;
+            padding:10px 10px 0;
+        }
+        #myul li p{
+            color:#1f1f17;
+        }
+        
+        .xe-widget.xe-counter-block .xe-upper, .xe-widget.xe-progress-counter .xe-upper{
+            background:#27a9e3;
+        }
+        .xe-widget.xe-counter-block, .xe-widget.xe-progress-counter{
+            background:#27a9e3;
+        }
+        .xe-widget.xe-counter-block .xe-upper .xe-icon i,
+        .xe-widget.xe-progress-counter .xe-upper .xe-icon i {
+        background:#27a9e3;
+          font-size: 32px;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-purple,
+        .xe-widget.xe-progress-counter.xe-counter-block-purple {
+          background: #28b779;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-purple .xe-upper,
+        .xe-widget.xe-progress-counter.xe-counter-block-purple .xe-upper {
+          background: #28b779;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-purple .xe-upper .xe-icon i,
+        .xe-widget.xe-progress-counter.xe-counter-block-purple .xe-upper .xe-icon i {
+          background-color: #28b779;
+          color: #ffffff;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-blue,
+        .xe-widget.xe-progress-counter.xe-counter-block-blue {
+          background: #852b99;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-blue .xe-upper,
+        .xe-widget.xe-progress-counter.xe-counter-block-blue .xe-upper {
+          background: #852b99;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-blue .xe-upper .xe-icon i,
+        .xe-widget.xe-progress-counter.xe-counter-block-blue .xe-upper .xe-icon i {
+          background-color: #852b99;
+          color: #ffffff;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-blue .xe-upper .xe-label .num,
+        .xe-widget.xe-progress-counter.xe-counter-block-blue .xe-upper .xe-label .num {
+          color: #ffffff;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-orange,
+        .xe-widget.xe-progress-counter.xe-counter-block-orange {
+          background: #ffb848;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-orange .xe-upper,
+        .xe-widget.xe-progress-counter.xe-counter-block-orange .xe-upper {
+          background: #ffb848;
+        }
+        .xe-widget.xe-counter-block.xe-counter-block-orange .xe-upper .xe-icon i,
+        .xe-widget.xe-progress-counter.xe-counter-block-orange .xe-upper .xe-icon i {
+          background-color: #ffb848;
+          color: #ffffff;
+        }
+        /*侧边栏宽度*/
+        .sidebar-menu {
+          display: table-cell;
+          position: relative;
+          width: 250px;
+          background: #2c2e2f;
+          z-index: 1;
+        }
+        /*更多高度*/
+        .xe-widget.xe-counter-block .xe-lower, .xe-widget.xe-progress-counter .xe-lower{
+            padding:8px  30px;
+            background:rgba(0,0,0,.3);
+        }
+        .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
+            line-height: 1;
+        }
+        .sidebar-menu .main-menu span{
+            font-size:15px;
+        }
+        .mytb>tr>td{
+            padding:9px 15px!important;
+            font-size:12px!important;
+        }
+        .tanul{
+            
+            height:100%;
+            list-style: none;
+        }
+        .tanli{
+        width:33%;
+        float:left;
+        }
+         .user-info-navbar{
+            margin-bottom: 25px;
+        }
+        .user-info-navbar .user-info-menu > li > a{
+            padding:12px 20px ;
+        }
+        .navbar{
+            height:44px;
+            
+        }
+        .user-info-navbar .user-info-menu > li > form{
+             padding:12px 20px ;
+        }
+        .mailbox-env .mailbox-sidebar .mailbox-list li{
+            border-bottom: none;
+        }
+        .mailbox-env .mailbox-sidebar .mailbox-list li a{
+            padding:2px 10px;
+            font-size:12px;
+        }
+        .btn.btn-icon-standalone i, .btn.btn-icon-standalone span{
+            padding:6px 12px;
+        }
+        .mailbox-env .mailbox-sidebar .mailbox-list{
+            margin-top:0;
+        }
+        td{
+            font-size:12px;
+        }
+        .table > thead > tr > td, .table > tbody > tr > td, .table > tfood > tr > td, .table > thead > tr > th, .table > tbody > tr > th, .table > tfood > tr > th{
+            padding:8px 15px;
+        }
+/*        
+#tablelist>tbody {
+
+    display:block;
+
+    height:450px;
+
+    overflow-y:scroll;
+   
+
+}
+
+#tablelist thead, #tablelist tbody tr {
+
+    display:table;
+
+    /*width:100%;*/
+
+/*    table-layout:fixed;
+
+}*/
+
+/*#tablelist>thead {
+    width: calc( 100% - 1em );
+    border-bottom: none!important;
+
+}*/
+
+#tablelist tbody {
+    display:block;
+    height:450px;
+    overflow-y:scroll;
+    padding-left:5px;
+    text-align: left;
+}
+
+#tablelist thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    left:2%;
+}
+
+#tablelist thead {
+    width: calc( 100% - 1em );
+      padding-left:10px;
+}
+/*  .fixedThead {
+            display: block;
+        }
+
+        .scrollTbody {
+            display: block;
+            height: 262px;
+            overflow: auto;
+            width: 100%;
+        }
+
+        #tablelist td, #tablelist th {
+            width: 200px;
+            
+            
+            word-break: keep-all;
+            white-space: nowrap;
+        }*/
+
+        
+/*#tablelist tbody 
+{
+    
+    display:block !important;
+    height:408px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+ 
+#tablelist thead{
+    display:table;
+  width:98.8% !important;
+   width:100%;
+    table-layout:fixed;
+}
+#tablelist tbody tr {
+    display:table;
+   
+  
+  width:100%;
+    height:30px;
+    table-layout:fixed;
+}*/
+    </style>
+</head>
+<body class="page-body">
+
+    <div class="settings-pane">
+            
+        <a href="#" data-toggle="settings-pane" data-animate="true">
+            &times;
+        </a>
+        
+        <div class="settings-pane-inner">
+            
+            <div class="row">
+                
+                <div class="col-md-4">
+                    
+                    <div class="user-info">
+                        
+                        <div class="user-image">
+                            <a href="extra-profile.html">
+                                <img src="assets/images/user-2.png" class="img-responsive img-circle" />
+                            </a>
+                        </div>
+                        
+                        <div class="user-details">
+                            
+                            <h3>
+                                <a href="extra-profile.html">John Smith</a>
+                                
+                                <!-- Available statuses: is-online, is-idle, is-busy and is-offline -->
+                                <span class="user-status is-online"></span>
+                            </h3>
+                            
+                            <p class="user-title">Web Developer</p>
+                            
+                            <div class="user-links">
+                                <a href="extra-profile.html" class="btn btn-primary">Edit Profile</a>
+                                <a href="extra-profile.html" class="btn btn-success">Upgrade</a>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <div class="col-md-8 link-blocks-env">
+                    
+                    <div class="links-block left-sep">
+                        <h4>
+                            <span>Notifications</span>
+                        </h4>
+                        
+                        <ul class="list-unstyled">
+                            <li>
+                                <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk1" />
+                                <label for="sp-chk1">Messages</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk2" />
+                                <label for="sp-chk2">Events</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk3" />
+                                <label for="sp-chk3">Updates</label>
+                            </li>
+                            <li>
+                                <input type="checkbox" class="cbr cbr-primary" checked="checked" id="sp-chk4" />
+                                <label for="sp-chk4">Server Uptime</label>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="links-block left-sep">
+                        <h4>
+                            <a href="#">
+                                <span>Help Desk</span>
+                            </a>
+                        </h4>
+                        
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <i class="fa-angle-right"></i>
+                                    Support Center
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-angle-right"></i>
+                                    Submit a Ticket
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-angle-right"></i>
+                                    Domains Protocol
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fa-angle-right"></i>
+                                    Terms of Service
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        
+        </div>
+        
+    </div>
+    
+    <div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by 调查中, "chat-visible" to make chat appear always -->
+            
+        <!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
+        <!-- Adding class "toggle-others" will keep only one menu item open at a time. -->
+        <!-- Adding class "collapsed" collapse sidebar root elements and show only icons. -->
+        <div class="main-content">
+                    
+            <!-- User Info, Notifications and Menu Bar -->
+            <nav class="navbar user-info-navbar" role="navigation">
+                
+                <!-- Left links for user info navbar -->
+                <ul class="user-info-menu left-links list-inline list-unstyled">
+                    
+                    <li class="hidden-sm hidden-xs">
+                        <a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </li>
+                    
+                    <li class="dropdown hover-line">
+                        <a href="#" data-toggle="dropdown">
+                            <i class="fa-envelope-o"></i>
+                            <span class="badge badge-green">15</span>
+                        </a>
+                            
+                        <ul class="dropdown-menu messages">
+                            <li>
+                                    
+                                <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+                                
+                                    <li class="active"><!-- "active" class means message is unread -->
+                                        <a href="#">
+                                            <span class="line">
+                                                <strong>Luc Chartier</strong>
+                                                <span class="light small">- yesterday</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                This ain’t our first item, it is the best of the rest.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="active">
+                                        <a href="#">
+                                            <span class="line">
+                                                <strong>Salma Nyberg</strong>
+                                                <span class="light small">- 2 days ago</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                Oh he decisively impression attachment friendship so if everything. 
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <span class="line">
+                                                Hayden Cartwright
+                                                <span class="light small">- a week ago</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <span class="line">
+                                                Sandra Eberhardt
+                                                <span class="light small">- 16 days ago</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                On so attention necessary at by provision otherwise existence direction.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Repeated -->
+                                    
+                                    <li class="active"><!-- "active" class means message is unread -->
+                                        <a href="#">
+                                            <span class="line">
+                                                <strong>Luc Chartier</strong>
+                                                <span class="light small">- yesterday</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                This ain’t our first item, it is the best of the rest.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="active">
+                                        <a href="#">
+                                            <span class="line">
+                                                <strong>Salma Nyberg</strong>
+                                                <span class="light small">- 2 days ago</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                Oh he decisively impression attachment friendship so if everything. 
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <span class="line">
+                                                Hayden Cartwright
+                                                <span class="light small">- a week ago</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <span class="line">
+                                                Sandra Eberhardt
+                                                <span class="light small">- 16 days ago</span>
+                                            </span>
+                                            
+                                            <span class="line desc small">
+                                                On so attention necessary at by provision otherwise existence direction.
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                                
+                            </li>
+                            
+                            <li class="external">
+                                <a href="blank-sidebar.html">
+                                    <span>All Messages</span>
+                                    <i class="fa-link-ext"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown hover-line">
+                        <a href="#" data-toggle="dropdown">
+                            <i class="fa-bell-o"></i>
+                            <span class="badge badge-purple">7</span>
+                        </a>
+                            
+                        <ul class="dropdown-menu notifications">
+                            <li class="top">
+                                <p class="small">
+                                    <a href="#" class="pull-right">Mark all Read</a>
+                                    You have <strong>3</strong> new notifications.
+                                </p>
+                            </li>
+                            
+                            <li>
+                                <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
+                                    <li class="active notification-success">
+                                        <a href="#">
+                                            <i class="fa-user"></i>
+                                            
+                                            <span class="line">
+                                                <strong>New user registered</strong>
+                                            </span>
+                                            
+                                            <span class="line small time">
+                                                30 seconds ago
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="active notification-secondary">
+                                        <a href="#">
+                                            <i class="fa-lock"></i>
+                                            
+                                            <span class="line">
+                                                <strong>Privacy settings have been changed</strong>
+                                            </span>
+                                            
+                                            <span class="line small time">
+                                                3 hours ago
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="notification-primary">
+                                        <a href="#">
+                                            <i class="fa-thumbs-up"></i>
+                                            
+                                            <span class="line">
+                                                <strong>Someone special liked this</strong>
+                                            </span>
+                                            
+                                            <span class="line small time">
+                                                2 minutes ago
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="notification-danger">
+                                        <a href="#">
+                                            <i class="fa-calendar"></i>
+                                            
+                                            <span class="line">
+                                                John cancelled the event
+                                            </span>
+                                            
+                                            <span class="line small time">
+                                                9 hours ago
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="notification-info">
+                                        <a href="#">
+                                            <i class="fa-database"></i>
+                                            
+                                            <span class="line">
+                                                The server is status is stable
+                                            </span>
+                                            
+                                            <span class="line small time">
+                                                yesterday at 10:30am
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                    <li class="notification-warning">
+                                        <a href="#">
+                                            <i class="fa-envelope-o"></i>
+                                            
+                                            <span class="line">
+                                                New comments waiting approval
+                                            </span>
+                                            
+                                            <span class="line small time">
+                                                last week
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li class="external">
+                                <a href="#">
+                                    <span>View all notifications</span>
+                                    <i class="fa-link-ext"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+                
+                
+                <!-- Right links for user info navbar -->
+                <ul class="user-info-menu right-links list-inline list-unstyled">
+                    
+                    <li class="search-form"><!-- You can add "always-visible" to show make the search input visible -->
+                        
+                        <form method="get" action="extra-search.html">
+                            <input type="text" name="s" class="form-control search-field" placeholder="Type to search..." />
+                            
+                            <button type="submit" class="btn btn-link">
+                                <i class="linecons-search"></i>
+                            </button>
+                        </form>
+                        
+                    </li>
+                    
+                    <li class="dropdown user-profile">
+                        <a href="#" data-toggle="dropdown" class="hello">
+                           <!--  <img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+                            <span>
+                                Arlind Nushi
+                                <i class="fa-angle-down"></i>
+                            </span> -->
+                        </a>
+                        
+                        
+                        <ul class="dropdown-menu user-profile-menu list-unstyled">
+                            
+                            <li>
+                                <a href="#settings">
+                                    <i class="fa-wrench"></i>
+                                   设置
+                                </a>
+                            </li>
+                           <!--  <li>
+                                <a href="#profile">
+                                    <i class="fa-user"></i>
+                                    Profile
+                                </a>
+                            </li> -->
+                            <li>
+                                <a href="#help">
+                                    <i class="fa-info"></i>
+                                    帮助
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="login.html">
+                                    <i class="fa-lock"></i>
+                                    注销
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#" data-toggle="chat">
+                            <i class="fa-comments-o"></i>
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </nav>
+            <div class="page-title">
+                
+                <div class="title-env">
+                    <h4 class="title" style="padding:20px 0 0; font-size:20px;">事件统计</h4>
+                  
+                </div>
+                
+                    <div class="breadcrumb-env">
+                    
+                                <ol class="breadcrumb bc-1">
+                                    <li>
+                            <a href="fxdp.html"><i class="fa-home"></i>Home</a>
+                        </li>
+                                </ol>
+                                
+                </div>
+                    
+            </div>
+            
+            <section class="mailbox-env">
+                
+                <div class="row">
+                    
+                    <!-- Inbox emails -->
+                    <div class="col-sm-10 mailbox-right">
+                        
+                        <div class="mail-env">
+                        
+                            <script type="text/javascript">
+                                jQuery(document).ready(function($)
+                                {
+                                    var $state = $(".mail-table thead input[type='checkbox'], .mail-table tfoot input[type='checkbox']"),
+                                        $chcks = $(".mail-table tbody input[type='checkbox']");
+                                    
+                                    // Script to select all checkboxes
+                                    $state.on('change', function(ev)
+                                    {
+                                        if($state.is(':checked'))
+                                        {
+                                            $chcks.prop('checked', true).trigger('change');
+                                        }
+                                        else
+                                        {
+                                            $chcks.prop('checked', false).trigger('change');
+                                        }
+                                    });
+                                    
+                                    // Row Highlighting
+                                    $chcks.each(function(i, el)
+                                    {
+                                        var $tr = $(el).closest('tr');
+                                        
+                                        $(this).on('change', function(ev)
+                                        {
+                                            $tr[$(this).is(':checked') ? 'addClass' : 'removeClass']('highlighted');
+                                        });
+                                    });
+                                    
+                                    // Stars
+                                    $(".mail-table .star").on('click', function(ev)
+                                    {
+                                        ev.prevent调查中();
+                                        
+                                        if( ! $(this).hasClass('starred'))
+                                        {
+                                            $(this).addClass('starred').find('i').attr('class', 'fa-star');
+                                        }
+                                        else
+                                        {
+                                            $(this).removeClass('starred').find('i').attr('class', 'fa-star-empty');
+                                        }
+                                    });
+                                });
+                            </script>
+                        
+                            <!-- mail table -->
+
+                            
+                                <table class="table mail-table" id="tablelist" style="display:block;">
+                                
+                                    <!-- mail table header -->
+                                    <thead class="fixedThead">
+                                        <tr style="font-weight:600;">
+                                           <!-- <th class="col-cb">
+                                                <input type="checkbox" class="cbr" />
+                                            </th> -->
+                                            <th style="font-weight:600;">
+                                                
+                                            案件编号
+                                                
+                                               
+                                            </th>
+                                            <th style="font-weight:600;">
+                                                
+                                              细节情况
+                                                
+                                               
+                                            </th>
+                                            <th style="font-weight:600;">
+                                                状态
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                                
+                                                名称
+                                            </th>
+                                            
+                                             <th style="font-weight:600;">
+                                                调查
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                                风险级别
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                               AGNT
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                               风险值
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                              金额
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                              地点
+                                                
+                                            </th>
+                                             <th style="font-weight:600;">
+                                              邮件
+                                                
+                                            </th>
+                                            <th style="font-weight:600;">
+                                             建议
+                                                
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <!-- mail table footer -->
+                                   
+                                    
+                                    <!-- email list -->
+
+                                
+                                        <tbody class="scrollTbody">
+                                            
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->
+                                                <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">10065145436@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            
+                                           <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                           <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                             <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                           <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                            <tr class="unread">
+                                                <!-- <td class="col-cb">
+                                                    <div class="checkbox checkbox-replace">
+                                                        <input type="checkbox" class="cbr" />
+                                                    </div>
+                                                </td> -->  <td>17-07-14</td>
+                                                <td class="col-name">
+                                                  
+                                                    <a href="mailbox-message.html" style="color:#74a7d6;" class="col-name">details</a>
+                                                </td>
+                                               <td>调查中</td>
+                                                 <td>JHON</td>
+                                               
+
+                                                 <td>是</td>
+                                                  <td>高</td>
+                                                   <td>京A111111</td>
+                                                   <td>65</td>
+                                                   <td>10065</td>
+                                                   <td>三元桥</td>
+                                                   
+                                                   <td style="color:#74a7d6;">1006514543653@163.com</td>
+                                                   <td>xxxxxxxxxx</td>
+
+                                            </tr>
+                                          </tbody>
+                                   
+                                  
+                                </table>
+                           
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- Mailbox Sidebar -->
+                    <div class="col-sm-2 mailbox-left">
+                        
+                        <div class="mailbox-sidebar">
+                            
+                            
+
+                            <a href="#" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right" style="background:#c1c0bc;width:45%;">
+                              
+                                <span>汇总</span>
+                            </a>
+                            
+                            
+                            <ul class="list-unstyled mailbox-list">
+                                <li class="">
+                                    <a href="#">
+                                        可疑报案：
+                                        <span class="pull-right">5</span>
+                                    </a>
+                                </li>
+                                <li>
+                                   <a href="#">
+                                        今日可调查事件：
+                                        <span class="pull-right">0</span>
+                                    </a>
+                                </li>
+                                <li>
+                                   <a href="#">
+                                        卷宗数：
+                                        <span class="pull-right">208</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                       总卷宗
+                                        <span class="pull-right">208</span>
+                                    </a>
+                                </li>
+                            
+                            </ul>
+                            <a href="#" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right" style="background:#c1c0bc;width:45%;">
+                              
+                                <span>卷宗查询</span>
+                            </a>
+                            
+                            
+                            <ul class="list-unstyled mailbox-list">
+                                <li class="">
+                                    <button type="" class="btn btn-white pull-right" style="padding:4px 8px; font-size:12px;"> 下一个卷宗</button>
+                                </li>
+                              
+                            
+                            </ul>
+                            <div class="vspacer" style="height:48px;"></div>
+                            
+                             <a href="#" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right" style="background:#c1c0bc;width:56%;">
+                              
+                                <span style=";">可疑卷宗过滤</span>
+                            </a>
+                            
+                            
+                            <ul class="list-unstyled mailbox-list">
+                                <li class="">
+                                    <p style="margin-bottom:4px;">
+                                        <span style="display:inline-block;width:40%;font-size:12px;">指定调查</span>
+                                    <select class="form-control  " id="se1" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                   
+                                        <option value="s">是</option>
+                                        <option value="f">否</option>
+                                      
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                <li>
+                                   <p >
+                                        <span style="display:inline-block;width:40%;font-size:12px;">确认事件</span>
+                                        <select class="form-control  " id="se2" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                         
+                                        <option value="s">是</option>
+                                        <option value="f">否</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li>                        
+                                <li>
+                                   <p style="margin-bottom:4px;">
+                                      <span style="display:inline-block;width:40%;font-size:12px;">事件地点</span>
+                                        <select class="form-control  " id="se3" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">小区</option>
+                                        <option value="au">高速公路</option>
+                                        <option value="bd">郊区公路</option>
+                                        <option value="br">其他</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                <!-- <li>
+                                    <p style="margin-bottom:4px;">
+                                   <span style="display:inline-block;width:40%;font-size:12px;">状态</span>
+                                       <select class="form-control  " id="" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">Albania</option>
+                                        <option value="au">Australia</option>
+                                        <option value="bd">Bandgladesh</option>
+                                        <option value="br">Brasil</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li> -->
+                                <li>
+                                   <p style="margin-bottom:4px;">
+                                      <span style="display:inline-block;width:40%;font-size:12px;">规则ID</span>
+                                        <select class="form-control  " id="se4" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                         <option value="0">其他</option>
+                                        <option value="1">车主</option>
+                                        <option value="2">代驾</option>
+                                      
+                                    </select>
+                                    </p>
+                                </li>
+                            <!--     <li>
+                                    <p style="margin-bottom:4px;">
+                                    <span style="display:inline-block;width:40%;font-size:12px;">指定调查</span>
+                                        <select class="form-control  " id="" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">Albania</option>
+                                        <option value="au">Australia</option>
+                                        <option value="bd">Bandgladesh</option>
+                                        <option value="br">Brasil</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li> -->
+                                <li>
+                                    <p style="margin-bottom:4px;">
+                                    <span style="display:inline-block;width:40%;font-size:12px;">用户画像</span>
+                                       <select class="form-control  " id="se5" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">优</option>
+                                        <option value="au">良</option>
+                                        <option value="bd">中</option>
+                                        <option value="br">其他</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                
+                                 <li>
+                                    <p style="margin-bottom:4px;">
+                                    <span style="display:inline-block;width:40%;font-size:12px;">机动车ID</span>
+                                       <select class="form-control  " id="se6" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">优</option>
+                                        <option value="au">良</option>
+                                        <option value="bd">中</option>
+                                        <option value="br">其他</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                
+                                <li>
+                                    <p style="margin-bottom:4px;">
+                                    <span style="display:inline-block;width:40%;font-size:12px;">时间</span>
+                                       <select class="form-control  " id="se7" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">早晨</option>
+                                        <option value="au">中午</option>
+                                        <option value="bd">下午</option>
+                                        <option value="br">夜间</option>
+                                          <option value="br">凌晨</option>
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                  <li>
+                                    <p style="margin-bottom:4px;">
+                                    <span style="display:inline-block;width:40%;font-size:12px;">赔金</span>
+                                       <select class="form-control  " id="se8" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">高</option>
+                                        <option value="au">中</option>
+                                        <option value="bd">低</option>
+                                       
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                     <li>
+                                    <p style="margin-bottom:4px;">
+                                    <span style="display:inline-block;width:40%;font-size:12px;">模型匹配</span>
+                                       <select class="form-control  " id="se9" style="display:inline-block;width:54%;height:22px;font-size:12px; padding:0 12px;">
+                                        <option value="al">高</option>
+                                        <option value="au">中</option>
+                                        <option value="bd">低</option>
+                                       
+                                        
+                                    </select>
+                                    </p>
+                                </li>
+                                <li>
+                                     <button type="button" class="btn btn-white pull-right guo" style="padding:4px 24px;margin-top:14px;font-size:12px;"> 过滤</button>
+                                   
+                                </li>
+                            
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </section>
+           
+     
+        </div> 
+
+
+</div>
+
+    <!-- Imported styles on this page -->
+    <link rel="stylesheet" href="assets/css/fonts/meteocons/css/meteocons.css">
+
+    <!-- Bottom Scripts -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/resizeable.js"></script>
+    <script src="assets/js/joinable.js"></script>
+    <script src="assets/js/xenon-api.js"></script>
+    <script src="assets/js/xenon-toggles.js"></script>
+
+
+    <!-- Imported scripts on this page -->
+    <script src="assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/js/xenon-widgets.js"></script>
+    <script src="assets/js/devexpress-web-14.1/js/dx.chartjs.js"></script>
+    <script src="assets/js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8" async defer></script>
+    <script src="assets/js/devexpress-web-14.1/js/globalize.min.js"></script>
+    <!-- JavaScripts initializations and stuff -->
+    <script src="assets/js/xenon-custom.js"></script>
+    
+    
+    <script src="assets/js/echarts/echarts.js"></script>
+    <script src="assets/js/echarts/china.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/resizeable.js"></script>
+    <script src="assets/js/joinable.js"></script>
+    <script src="assets/js/xenon-api.js"></script>
+    <script src="assets/js/xenon-toggles.js"></script>
+
+
+    <link rel="stylesheet" href="assets/js/dropzone/css/dropzone.css">
+
+    <!-- Bottom Scripts -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/resizeable.js"></script>
+    <script src="assets/js/joinable.js"></script>
+    <script src="assets/js/xenon-api.js"></script>
+    <script src="assets/js/xenon-toggles.js"></script>
+
+
+    <!-- Imported scripts on this page -->
+    <script src="assets/js/dropzone/dropzone.min.js"></script>
+
+
+    <!-- JavaScripts initializations and stuff -->
+    <script src="assets/js/xenon-custom.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/xb_scroll.js" ></script>
+    <script src="assets/js/echarts/dataTool.js" ></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/TweenMax.min.js"></script>
+    <script src="assets/js/resizeable.js"></script>
+    <script src="assets/js/joinable.js"></script>
+    <script src="assets/js/xenon-api.js"></script>
+    <script src="assets/js/xenon-toggles.js"></script>
+
+
+    <!-- JavaScripts initializations and stuff -->
+    <script src="assets/js/xenon-custom.js"></script>
+    <script>
+  window.onload=function(){
+     $('.hello').html(`<img src="assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+                            <span>
+                            您好，${sessionStorage['loginUname']}
+                                <i class="fa-angle-down"></i>
+                            </span>`);
+  }
+ $('.guo').on('click',function(){
+    var se1=$("#se1").find("option:selected").val();
+    var se2=$("#se2").find("option:selected").val();
+    var se3=$("#se3").find("option:selected").val();
+    var se4=$("#se4").find("option:selected").val();
+    var se5=$("#se5").find("option:selected").val();
+    var se6=$("#se6").find("option:selected").val();
+    var se7=$("#se7").find("option:selected").val();
+    var se8=$("#se8").find("option:selected").val();
+
+    
+     // var starttime=$('#starttime').val();
+
+     // var endtime=$('#endtime').val();
+
+     // var caseid=$('#caseid').val()
+     //    console.log(usertype);
+     //    console.log(risk);
+
+     //  console.log(inspectstatus);
+     //  console.log(starttime);
+     //  console.log(endtime);
+     //   console.log(caseid);
+
+    var url= "http://101.201.253.36:8087/insurance/console/riskEvent?";
+    
+     if(se4!=0){
+      url+='&userType='+se4
+    }
+    if(se7!=0){
+      url+='&timePeriod='+se4
+    }
+    if(se8!=0){
+      url+='&compensateBound='+se8
+    }
+
+
+     
+
+
+
+
+        $.ajax({
+                     type:'GET',
+                     url:url,
+                     // url:'http://101.201.253.36:8087/insurance/console/riskEvent?userType='+usertype+'&risklevel='+risk+'&inspectStatus='+inspectstatus+'&beginTime='+starttime+'&endTime='+endtime+'&caseId='+caseid,
+                  beforeSend: function(xhr) {
+                        var session = Cookies.get('JSESSIONID');
+                        xhr.setRequestHeader("SESSION", session);
+                    },
+                     success:function(res){
+                         console.log(res)
+                         if(res.code===2000){
+                            
+                             console.log(res.data)
+                            // console.log(res.data[0].caseId)
+
+                             var html='';
+                             var riskle='高'
+                             
+                                for(var i=0;i<res.data.length;i++){
+                                    if(res.data[i].risklevel==3){
+                                riskle='高'
+                                 }
+                                 if(res.data[i].risklevel==2){
+                                    riskle='中'
+                                 }
+                                  if(res.data[i].risklevel==1){
+                                    riskle='低'
+                                 }
+                                   if(res.data[i].risklevel==0){
+                                    riskle='全部'
+                                 }
+                                    console.log()
+                                    html+=`
+                                        <tr>
+                                              <td class="tdone">${res.data[i].caseId}</td>
+                                               <td class="">details</td>
+                                              <td>${riskle}</td>
+                                             
+                                              <td class="td4">${res.data[i].reporter}</td>
+                                           
+                                              <td class="td5">是</td>
+                                               <td>${riskle}</td>
+                                            <td>${res.data[i].insobjidentifier}</td>
+                                                <td>${res.data[i].riskvalue}</td>
+                                                  <td>${res.data[i].compensate}</td>
+                                                   <td>${res.data[i].location}</td>
+                                                   <td>111111111@qq.com</td>
+                                             
+                                              
+                                              <td>${res.data[i].suggestion}</td>
+                                              
+                                        </tr>
+                                    `
+                                }
+                            $('.scrollTbody').html(html);
+
+                         }
+                         // else{
+                             
+                         // }
+                     }
+
+                 })
+
+   })
+    </script>
+
+</body>
+</html>

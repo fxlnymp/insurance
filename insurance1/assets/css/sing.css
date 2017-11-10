@@ -1,0 +1,28 @@
+
+@media  screen and (min-width: 1368px) {
+
+  
+    .liner2{
+  
+    top:-15em; 
+    left:50%;
+   
+    }
+}
+@media  screen and (max-width: 1367px) {
+
+    .liner2{
+    width:50%;
+    height:1px;
+    border-left:1px dashed #aaa;
+    border-bottom:1px dashed #aaa;
+    position:relative;
+    top:-5em; 
+    left:50%;
+    z-index:20;
+    opacity:1;
+    }
+    .mygif{
+        margin-top: 20%!important;
+    }
+}
